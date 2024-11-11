@@ -25,9 +25,10 @@
 
 import 'package:flutter_flavorizr/src/extensions/extensions_map.dart';
 import 'package:flutter_flavorizr/src/parser/models/flavorizr.dart';
-import 'package:flutter_flavorizr/src/processors/android/icons/android_adaptive_icons_processor.dart';
 import 'package:flutter_flavorizr/src/processors/android/icons/android_adaptive_icon_xml_processor.dart';
+import 'package:flutter_flavorizr/src/processors/android/icons/android_adaptive_icons_processor.dart';
 import 'package:flutter_flavorizr/src/processors/android/icons/android_icon_processor.dart';
+import 'package:flutter_flavorizr/src/processors/android/icons/android_notification_icon_processor.dart';
 import 'package:flutter_flavorizr/src/processors/commons/queue_processor.dart';
 
 class AndroidIconsProcessor extends QueueProcessor {
@@ -43,6 +44,19 @@ class AndroidIconsProcessor extends QueueProcessor {
                     flavorName,
                     AndroidIconProcessor(
                       flavor.android!.icon ?? flavor.app.icon ?? '',
+                      flavorName,
+                      config: config,
+                    ),
+                  ),
+                )
+                .values,
+            ...config.androidFlavors
+                .where((_, flavor) => flavor.android?.notificationIcon != null)
+                .map(
+                  (flavorName, flavor) => MapEntry(
+                    flavorName,
+                    AndroidNotificationIconProcessor(
+                      flavor.android!.notificationIcon!,
                       flavorName,
                       config: config,
                     ),

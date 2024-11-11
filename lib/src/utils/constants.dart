@@ -31,6 +31,8 @@ class K {
   static String androidIconPath =
       '$androidAppPath/src/%s/res/%s/ic_launcher.png';
 
+  static String androidNotificationIconPath =
+      '$androidAppPath/src/%s/res/%s/ic_notification.png';
   static String androidAdaptiveIconBackgroundPath =
       '$androidAppPath/src/%s/res/%s/ic_launcher_background.png';
 

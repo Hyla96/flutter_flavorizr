@@ -53,6 +53,9 @@ class Android extends OS {
   @JsonKey(disallowNullValue: true)
   final AdaptiveIcon? adaptiveIcon;
 
+  @JsonKey(disallowNullValue: true)
+  final String? notificationIcon;
+
   Android({
     required this.applicationId,
     this.customConfig = const {},
@@ -63,6 +66,7 @@ class Android extends OS {
     super.firebase,
     super.icon,
     this.adaptiveIcon,
+    this.notificationIcon,
   });
 
   factory Android.fromJson(Map<String, dynamic> json) =>
